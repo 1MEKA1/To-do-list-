@@ -8,7 +8,7 @@
     <style>
     body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: white;
     margin: 0;
     padding: 20px;
 }
@@ -60,7 +60,26 @@ li.completed {
     </div>
     <ul id="task-list"></ul>
     <script src="script.js"> 
-        
+       function addTask() {
+    const taskInput = document.getElementById('new-task');
+    const taskText = taskInput.value.trim();
+  if (taskText !== "") {
+        const taskList = document.getElementById('task-list');
+ const li = document.createElement('li');
+        li.innerText = taskText;
+ const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Удалить';
+        deleteButton.onclick = function() {
+            taskList.removeChild(li);
+        };
+  li.appendChild(deleteButton);
+ li.onclick = function() {
+    li.classList.toggle('completed');
+        };
+ taskList.appendChild(li);
+        taskInput.value = '';
+    }
+} 
     </script>
 </body>
 </html>
